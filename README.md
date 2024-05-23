@@ -1,2 +1,3 @@
-# docs-driverworks-proxyprotocol-camera
- Camera Proxy SDK documentation
+# Driverworks Proxy/Protocol Guide - camera
+
+Camera Proxy SDK documentation
