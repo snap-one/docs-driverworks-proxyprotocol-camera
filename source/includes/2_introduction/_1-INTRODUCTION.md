@@ -1,4 +1,6 @@
 
+This documentation includes content that details the functions that make up the Camera Proxy which is supported in the DriverWorks Software Development Kit.
+
 ## Proxies (Commands)
 
 A proxy driver is an interface to the Control4 system for a set of devices that share common functionality. For instance, most DVD disc changers have common controls such as PLAY, STOP, PAUSE and FAST FORWARD.  The disc changer proxy allows for a common user interface to control all disc changers.  The Control4 system (Director) sends information to and receives information from the proxy drivers.  The proxy drivers send information to and receives information from the protocol drivers.
