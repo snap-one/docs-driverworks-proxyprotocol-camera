@@ -323,6 +323,9 @@
             <a href="#what-s-new" class="toc-h1 toc-link" data-title="What’s New">What’s New</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#what-s-new-what-s-new-in-3-4-2" class="toc-h2 toc-link" data-title="What’s New in 3.4.2">What’s New in 3.4.2</a>
+                  </li>
+                  <li>
                     <a href="#what-s-new-what-s-new-in-3-4-1" class="toc-h2 toc-link" data-title="What’s New in 3.4.1">What’s New in 3.4.1</a>
                   </li>
                   <li>
@@ -624,17 +627,6 @@
               </ul>
           </li>
           <li>
-            <a href="#dynamic-camera-streams" class="toc-h1 toc-link" data-title="Dynamic Camera Streams">Dynamic Camera Streams</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#dynamic-camera-streams-related-apis" class="toc-h2 toc-link" data-title="Related APIs">Related APIs</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#camera-audio-distribution" class="toc-h1 toc-link" data-title="Camera Audio Distribution">Camera Audio Distribution</a>
-          </li>
-          <li>
             <a href="#camera-capabilities" class="toc-h1 toc-link" data-title="Camera Capabilities">Camera Capabilities</a>
               <ul class="toc-list-h2">
                   <li>
@@ -737,7 +729,7 @@
 
 <p><strong>Copyright</strong></p>
 
-<p>Copyright 2023 Snap One, LLC. All rights reserved.</p>
+<p>Copyright 2024 Snap One, LLC. All rights reserved.</p>
 
 <p>The above copyright notice applies to all content in this repository unless otherwise stated explicitly herein that a third-party’s copyright applies.</p>
 
@@ -764,7 +756,7 @@ Salt Lake City, UT 84020 USA</p>
 
 <h2 id='introduction-proxies-commands'>Proxies (Commands)</h2>
 
-<p>A proxy driver is an interface to the Control4 system for a set of devices that share common functionality. For instance, most DVD disc changers have common controls such as PLAY, STOP, PAUSE and FAST FORWARD.  The disc changer proxy allows for a common user interface to control all disc changers.  The Control4 system (Director) sends information to and receives information from the proxy drivers.  The proxy drivers send information to and receives information from the protocol drivers.
+<p>A proxy driver is an interface to the Control4 system for a set of devices that share common functionality. For instance, most DVD disc changers have common controls such as NIGHT MODE, PAN RIGHT and PAN LEFT.  The camera proxy allows for a common user interface to control all cameras.  The Control4 system (Director) sends information to and receives information from the proxy drivers.  The proxy drivers send information to and receives information from the protocol drivers.
 Remember, your DriverWorks driver interacts with the proxy driver which then interacts with the system.  As a driver developer you will be relying on this proxy to provide status (notification) to the Control4 system for the device you are controlling.  You will also receive commands from the system that you will act on to control the device.  These commands and notifications are at the heart of what you will be implementing in your driver.  Essentially your driver is becoming the go-between from the Control4 system and your device with the proxy driver giving structure to the commands and notifications which you will be implementing.
 Your driver can facilitate communications with multiple types of proxies for a single device. As an example, a Security System driver will utilize both the Security proxy and the Contacts proxy. These additional proxies are configured in the &lt;connections&gt; section of the .c4z.</p>
 
@@ -773,357 +765,57 @@ Your driver can facilitate communications with multiple types of proxies for a s
 <p>Two similar devices may have the same functionality but utilize a very different command set.  A protocol driver provides the device-specific information needed to communicate with the Control4 system.  In the case of DriverWorks, the DriverWorks driver is the protocol driver.  When combined with the device-specific.c4Z file it provides the custom code necessary to implement the 2-way device driver.  In the case of DriverWorks, the DriverWorks driver is the protocol driver. When combined with the device-specific.c4Z file it provides the custom code necessary to implement the 2-way device driver.</p>
 <h1 id='what-s-new'>What’s New</h1>
 
+<h2 id='what-s-new-what-s-new-in-3-4-2'>What’s New in 3.4.2</h2>
+
+<p>There were no modifications to the Camera Proxy  in conjunction with O.S. Release 3.4.2.</p>
+
 <h2 id='what-s-new-what-s-new-in-3-4-1'>What’s New in 3.4.1</h2>
 
-<p>There were no modifications to the Proxy and Protocol Guide in conjunction with O.S. Release 3.4.1.</p>
+<p>There were no modifications to the Camera Proxy in conjunction with O.S. Release 3.4.1.</p>
 
-<h2 id='what-s-new-what-s-new-in-3-4-0'>What’s New in 3.4.0</h2><h3 id='what-s-new-what-s-new-in-3-4-0-blind-proxy'>Blind Proxy</h3>
-<p>A new capability has been added to the proxy called <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#blind-capabilities-always_send_level">always_send_level</a>. If value is true, then the SetTargetLevel commands are always sent regardless of current level values. This is useful if the blind device does not support two-way communication and is controlled outside of the Control4 operating system. </p>
-<h3 id='what-s-new-what-s-new-in-3-4-0-camera-proxy'>Camera Proxy</h3>
+<h2 id='what-s-new-what-s-new-in-3-4-0'>What’s New in 3.4.0</h2><h3 id='what-s-new-what-s-new-in-3-4-0-camera-proxy'>Camera Proxy</h3>
 <p>Beginning with O.S. 3.4.0, camera drivers have the ability to distribute audio to devices running Navigator. If a camera supports the proper <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-audio-distribution">CODEC</a> and the camera microphone has been enabled in the appropriate interface a new audio button will appear at the bottom of the single-camera view. This will allow the user to hear live audio with the live video.</p>
-<h3 id='what-s-new-what-s-new-in-3-4-0-generic-media-player-proxy'>Generic Media Player Proxy</h3>
-<p>A new capability has been added to the proxy called <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#generic-media-player-capabilities-allow_audio_pathing">allow_audio_pathing</a>. This capability is applicable in the scenario where the AV Switch proxy is included as a secondary proxy to the Generic Media Player Proxy. It is useful  when modeling streaming media devices that require minidrivers.</p>
-<h3 id='what-s-new-what-s-new-in-3-4-0-light-v2-proxy'>Light (v2) Proxy</h3>
-<p>The following color conversion functions have been modified in 3.4.0. The gamut parameter now receives a new valid string of: &quot;custom”. See the links below for more information.</p>
-
-<p>RGB functions:
-- <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-conversion-commands-colorrgbtoxy">ColorRGBtoXY</a>
-- <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-conversion-commands-colorxytorgb">ColorXYtoRGB</a></p>
-
-<p>HSV functions:
-- <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-conversion-commands-colorhsvtoxy">ColorHSVtoXY</a>
-- <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-conversion-commands-colorxytohsv">ColorXYtoHSV</a></p>
 
 <h2 id='what-s-new-what-s-new-in-3-3-2'>What’s New in 3.3.2</h2><h3 id='what-s-new-what-s-new-in-3-3-2-camera-proxy'>Camera Proxy</h3>
 <p><strong>Support for Dynamic Camera Streams</strong></p>
 
 <p>Camera drivers can now implement a new <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#dynamic-camera-streams">dynamic streams API</a> to provide a list of streams that the Navigators can pick from. </p>
-<h3 id='what-s-new-what-s-new-in-3-3-2-light-v2-proxy'>Light V2 Proxy</h3>
-<p><strong>Capabilities that have been Added</strong></p>
-
-<p>A new feature has been delivered in O.S. 3.3.2 which allows dealers and customers to specify how a light&#39;s brightness behaves when the light is turned on. The functionality includes:</p>
-
-<ul>
-<li>Preset - Light turns on to a preset level.</li>
-<li>Previous - Light turns on to the previous light level.</li>
-<li>Default On - Provided for backwards compatibility and is the same as setting Preset to On.</li>
-</ul>
-
-<p>Driver developers must opt-in to this new feature and which parts it wants to support via the following new capabilities:</p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-brightness_on-mode_preset">brightness_on_mode_preset</a> has been included to enable the brightness presets for &quot;On Mode&quot; behavior for a light.</p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-brightness_on_mode_previous">brightness_on_mode_previous</a> has been included to enable the Previous On &quot;On Mode&quot; brightness  behavior for a light.</p>
-
-<p>A new feature was created to allow dealers and customers to specify how a light&#39;s color behaves when a light is turned on. The functionality includes:</p>
-
-<ul>
-<li>Color Fade - Color behavior such as Dim to Warm</li>
-<li>Preset - Color changes to a preset.</li>
-<li>Previous - Color changes to the previous color value.</li>
-<li>Default On - Provided for backwards compatibility and is the same as setting Preset to On.</li>
-</ul>
-
-<p>Driver developers must opt-in to this new feature and which parts it wants to support via the following new capabilities:</p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-color_on_mode_fade">color_on_mode_fade</a> has been included to enable the Fade On &quot;On Mode&quot; behavior, such as Dim to Warm, for a light.</p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-color_on_mode_preset">color_on_mode_preset</a> has been included to enable presets for use with &quot;On Mode&quot; behavior for a light.</p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-color_on_mode_previous">color_on_mode_previous</a> has been included to enable the Previous On &quot;On Mode&quot; behavior for a light.</p>
-
-<p>Additionally,  the following new capabilities have been included in 3.3.2:</p>
-
-<p>A new capability: <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-brightness_rate_max">brightness_rate_max</a> has been included in support of drivers without buttons. This capability allows these driver to no longer need to define click and hold maximum rates.</p>
-
-<p>A new capability: <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-brightness_rate_min">brightness_rate_min</a> has been included in support of drivers without buttons. This capability allows these driver to no longer need to define click and hold minimum rates.</p>
-
-<p>A new capability: <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-supports_brightness_stop">supports_brightness_stop</a> has been included if a light brightness transition can be stopped during a ramp. </p>
-
-<p><strong>Capabilities that have been Deprecated</strong></p>
-
-<p>fixed_ramp_rate - Use <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-click_rate_min">click_rate_min</a> and <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-click_rate_max">click_rate_max</a> instead.</p>
-
-<p>has_fixed_ramp_rate - Use <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-click_rate_min">click_rate_min</a> and <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-click_rate_max">click_rate_max</a> instead.</p>
-
-<p>num_buttons</p>
-
-<p>ramp_level</p>
-
-<p>min_max</p>
-
-<p>on_off</p>
-
-<p>buttons_are_virtual</p>
-
-<p><strong>Commands that have been Added</strong></p>
-
-<p>Note: Enforcement of valid minimum and maximum values for many Light v2 commands are being enforced in conjunction with 3.3.2. </p>
-
-<p>A new command: <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-add_driver_color_preset">ADD_DRIVER_COLOR_PRESET</a> has been included to add a new driver specific color preset.</p>
-
-<p>A new command: <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-delete_driver_-color_-preset">DELETE_DRIVER_COLOR_PRESET</a> has been added to remove a driver configured color preset. </p>
-
-<p>A new command: <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-dynamic_off">DYNAMIC_OFF</a> has been added to support UIs with an off command to pair with the DYNAMIC_ON command.</p>
-
-<p>A new command: <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-dynamic_on">DYNAMIC_ON</a> has been added to allows UI&#39;s and programming to &quot;turn on&quot; a light involving both brightness and color in a single command</p>
-
-<p>A new command <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-modify_driver_color_preset">MODIFY_DRIVER_COLOR_PRESET</a> has been included to change an existing driver color preset.</p>
-
-<p>A new command <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-set_brightness_stop">SET_BRIGHTNESS_STOP</a> has been added to stop a ramp if in progress.</p>
-
-<p>A new command <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-set_color_stop">SET_COLOR_STOP</a> has been added to stops a ramp of color if in progress.</p>
-
-<p>A new command <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-set_brightness_on_mode">SET_BRIGHTNESS_ON_MODE</a> has been added to maintain the On preset value.</p>
-
-<p>A new command <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-set_brightness_rate_default">SET_BRIGHTNESS_RATE_DEFAULT</a> has been added. This command is used in conjunction with generic On/Off commands to retrieve the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-update_brightness_rate_default">UPDATE_BRIGHTNESS_RATE_DEFAULT</a> value.</p>
-
-<p>A new command <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-set_color_on_mode">SET_COLOR_ON_MODE</a>  has beed added define color on mode.</p>
-
-<p>A new command <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-set_color_rate_default">SET_COLOR_RATE_DEFAULT</a> has been added. This command is used in conjunction with generic On/Off commands to retrieve the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-update_color_rate_default">UPDATE_COLOR_RATE_DEFAULT</a> value.</p>
-
-<p>A new command <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-update_brightness_on_mode">UPDATE_BRIGHTNESS_ON_MODE</a> has been added to obtain how a light should turn on with regards to brightness.</p>
-
-<p>A new command <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-set_brightness_rate_default">UPDATE_BRIGHTNESS_RATE_DEFAULT</a> has been added to provide a default value when a rate change is not provided.</p>
-
-<p>A new command <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-update_brightness_preset">UPDATE_BRIGHTNESS_PRESET</a> has beeb added to send a command when a press is changed.</p>
-
-<p>A new command <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-update_color_on_mode">UPDATE_COLOR_ON_MODE</a> has been added to obtain how a light should turn on with regards to color.</p>
-
-<p>A new command <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-update_color_preset">UPDATE_COLOR_PRESET</a> has been added to manage On and Dim values across various brands and models of lights.</p>
-
-<p>A new command <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-update_color_rate_default">UPDATE_COLOR_RATE_DEFAULT</a> has been added. This command is used in conjunction with generic On/Off commands to update the color rate default value.</p>
-
-<p><strong>Commands that have been Modified</strong></p>
-
-<p>The <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-set_color_target">SET_COLOR_TARGET</a> command has been enhanced with new parameters to support hue, saturation and presets. Additionally, this command previously included a parameter of RATE. This parameter name has changed to LIGHT_COLOR_TARGET_RATE.</p>
-
-<p><strong>Commands that have been Deprecated</strong></p>
-
-<p>GET_LIGHT_LEVEL </p>
-
-<p>GET_CONNECTED_STATE </p>
-
-<p>GET_PROPERTIES </p>
-
-<p><strong>Conditionals that have been Added</strong></p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-conditionals">IS_BRIGHTNESS</a></p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-conditionals">IS_BRIGHTNESS_TARGET</a></p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-conditionals">IS_COLOR_TARGET</a> </p>
-
-<p><strong>Notifications that have been Modified</strong></p>
-
-<p>The <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-protocol-notifications-light_brightness_changing">LIGHT_BRIGHTNESS_CHANGING</a> notify has been modified to include two new optional parameters: LIGHT_BRIGHTNESS_CURRENT_PRESET_ID and LIGHT_BRIGHTNESS_TARGET_PRESET_ID.</p>
-
-<p>The <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-protocol-notifications-light_color_changing">LIGHT_COLOR_CHANGING</a> notify has been modified to include parameters for Preset IDs. Additionally, this notify previously included a parameter of RATE. This parameter name has changed to LIGHT_COLOR_TARGET_RATE.</p>
-
-<p>The <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-protocol-notifications-light_color_changed">LIGHT_COLOR_CHANGED</a> notify has been modified to include a parameter for a Preset ID.</p>
-
-<p><strong>Variables that have been Added</strong></p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-variables">Brightness Target Ramp Rate in Milliseconds</a></p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-variables">Brightness Target Rate Remaining in Milliseconds</a></p>
-
-<p><strong>Variables that have been Deprecated</strong></p>
-
-<p>PRESET_LEVEL has been deprecated as the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-update_brightness_on_mode">brightness_on_mode_preset</a> capability contains this value. </p>
-
-<p><strong>Known Issue(s)</strong></p>
-
-<p><em>Color Lighting Control may not Work on Some Drivers</em></p>
-
-<p>Currently, there is a known problem with color control not working on drivers that are looking for a RATE parameter in the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-set_color_target">SET_COLOR_TARGET </a>command. The RATE parameter was not correctly implemented due to the limits of support for color rate ramping in previous versions. We are finalizing the changes to make this fully work in 3.3.2. As a result, the “RATE” parameter name has been changed to “LIGHT_COLOR_TARGET_RATE”.</p>
-
-<p><em>Button Link Binding for Brightness Stop Functionality not Working</em></p>
-
-<p>A defect in 3.3.2 prevents keypad buttons bound to the Proxy’s BUTTON_LINK binding for Brightness Stop from working. This will be resolved in 3.3.3.</p>
 
 <h2 id='what-s-new-what-s-new-in-3-3-1'>What’s New in 3.3.1</h2>
 
-<p><strong>Light V2 Proxy</strong></p>
+<p>There were no modifications to the Camera Proxy  in conjunction with O.S. Release 3.3.1.</p>
 
-<p>The capability: <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-color_trace_tolerance">color_trace_tolerance</a> has been modified to accept a Delta value of &gt; .01. When provided, the CIELa*b* tolerance formula is used to determining if a color is the as another color in the system.</p>
+<h2 id='what-s-new-what-s-new-in-3-3-0'>What’s New in 3.3.0</h2>
 
-<p>The following Conversion Commands have been enhanced to include an optional parameter: gamut. This parameter allows for the specification of a gamut type for use in the conversions.</p>
-
-<ul>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-conversion-commands-colorhsvtoxy">ColorHSVtoXY</a></li>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-conversion-commands-colorxytohsv">ColorXYtoHSV</a></li>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-conversion-commands-colorrgbtoxy">ColorRGBtoXY</a></li>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-conversion-commands-colorxytorgb">ColorXYtoRGB</a></li>
-</ul>
-
-<p><strong>Camera Proxy</strong></p>
-
-<p>The Camera Proxy documentation has been has enhanced to include new information regarding:</p>
-
-<ul>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#dynamic-camera-streams">Camera Streams</a></li>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#dynamic-camera-streams">Driver Support for Multiple Streams</a></li>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#dynamic-camera-streams">Support for Caching URLS</a></li>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-proxy-extras-interface-library">Support for The Extras Interface Library</a> </li>
-</ul>
-
-<p>A new command: <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-proxy-commands-get_stream_urls">GET_STREAM_URLS</a> has been added. It is used to obtain URLs for a camera that does not have a constant URL like a Cloud based camera or for cameras that have a wider range of features and configurable options that can produce better customer experiences using various client</p>
-
-<p>A new notification: <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-protocol-notifications-stream_urls_ready">STREAM_URLS_READY</a> has been added. This notify is used as a follow up to a GET_STREAM_URLS Synchronous call. This Notify will let a UI know that the URL information they requested is ready. </p>
-
-<p>New capabilities added to the Camera proxy include:  </p>
-
-<ul>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-capabilities-dynamic_urls_use_type">dynamic_urls_use_type</a></li>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-capabilities-requires_dynamic_stream_urls">requires_dynamic_stream_urls</a></li>
-</ul>
-
-<p>Dynamic Presets are now supported within the Camera Proxy.  The following preset functionality has been include: </p>
-
-<ul>
-<li>Save new presets.</li>
-<li>Change preset name.</li>
-<li>Recapture/update existing preset.</li>
-<li>Reorder presets.</li>
-<li>Delete a preset.</li>
-</ul>
-
-<p>Dynamic Presets require the following new Capability:</p>
-
-<ul>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-capabilities-has_dynamic_presets">has_dynamic_presets</a></li>
-</ul>
-
-<p>Dynamic Presets require the following new Notifications:</p>
-
-<ul>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-protocol-notifications-dynamic_urls_changed">DYNAMIC_URLS_CHANGED</a></li>
-</ul>
-
-<p>Dynamic Presets require the following new Commands:</p>
-
-<ul>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-proxy-commands-select_preset">SELECT_PRESET</a></li>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-proxy-commands-change_preset_name">CHANGE_PRESET_NAME</a></li>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-proxy-commands-modify_preset">MODIFY_PRESET</a></li>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-proxy-commands-delete_preset">DELETE_PRESET</a></li>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-proxy-commands-change_preset_order">CHANGE_PRESET_ORDER</a></li>
-</ul>
-
-<p>The following existing Camera Proxy capabilities are now Dynamic Capabilities:</p>
-
-<ul>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-capabilities-has_-pan">has_pan</a></li>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-capabilities-has_tilt">has_tilt</a></li>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-capabilities-has_zoom">has_zoom</a></li>
-<li><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#camera-capabilities-has_home">has_home</a></li>
-</ul>
-
-<h2 id='what-s-new-what-s-new-in-3-3-0'>What’s New in 3.3.0</h2><h3 id='what-s-new-what-s-new-in-3-3-0-light-proxy-color-enhancements'>Light Proxy Color Enhancements</h3>
-<p>This release of the 3.3.0 beta Proxy and Protocol Guide has been delivered to support the Light Proxy’s new color management functionality. This includes:</p>
-<h3 id='what-s-new-what-s-new-in-3-3-0-light-v2-proxy-capabilities'>Light V2 Proxy Capabilities</h3>
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-color_correlated_temperature_max">color_correlated_temperature_max</a></p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-color_correlated_temperature_min">color_correlated_temperature_min</a></p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-color_rate_behavior">color_rate_behavior</a></p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-color_rate_max">color_rate_max</a></p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-color_rate_min">color_rate_min</a></p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-color_trace_tolerance">color_trace_tolerance</a></p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-supports_color">supports_color</a></p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-capabilities-supports_color_correlated_temperature">supports_color_correlated_temperature</a></p>
-<h3 id='what-s-new-what-s-new-in-3-3-0-light-v2-proxy-commands'>Light V2 Proxy Commands</h3>
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-commands-set_color_target">SET_COLOR_TARGET</a></p>
-<h3 id='what-s-new-what-s-new-in-3-3-0-light-v2-proxy-conversion-commands'>Light V2 Proxy Conversion Commands</h3>
-<p>This section lists the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-conversion-commands">Commands</a> used for converting to/from hue, saturation and lightness (HSV) and red, blue and green (RGB).</p>
-<h3 id='what-s-new-what-s-new-in-3-3-0-light-v2-proxy-conditionals'>Light V2 Proxy Conditionals</h3>
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-conditionals">IS_COLOR</a></p>
-<h3 id='what-s-new-what-s-new-in-3-3-0-light-v2-protocol-notifications'>Light v2 Protocol Notifications</h3>
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-protocol-notifications-light_color_changed">LIGHT_COLOR_CHANGED</a></p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-protocol-notifications-light_color_changing">LIGHT_COLOR_CHANGING</a></p>
-<h3 id='what-s-new-what-s-new-in-3-3-0-light-v2-proxy-events'>Light V2 Proxy Events</h3>
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-events">light_color_changed</a></p>
-
-<p><a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-events">light_color_changing</a></p>
-<h3 id='what-s-new-what-s-new-in-3-3-0-light-v2-proxy-extras'>Light V2 Proxy Extras</h3>
-<p>New supporting <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-v2-extras-interface-library">documentation</a>.</p>
-<h3 id='what-s-new-what-s-new-in-3-3-0-advanced-lighting-scene-agent'>Advanced Lighting Scene Agent </h3>
-<p>New supporting <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#advanced-lighting-scene-agent">documentation</a>.</p>
-<h3 id='what-s-new-what-s-new-in-3-3-0-light-driver-development-best-practices'>Light Driver Development Best Practices</h3>
-<p>A new section has been added to the Light V2 proxy content including <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#light-driver-development-best-practices">best practice recommendations</a> for light driver developers.</p>
-<h3 id='what-s-new-what-s-new-in-3-3-0-audio-video-switch-display-adjustable-bindings'>Audio Video Switch Display Adjustable Bindings</h3>
-<p>O.S. releases 3.3.0 provides the ability to hide <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#display-adjustable-av-switch-bindings">AV Switch Bindings</a> that are not being used. This feature has been provided to better manage the UI display within ComposerPro.</p>
+<p>There were no modifications to the Camera Proxy  in conjunction with O.S. Release 3.4.2.</p>
 
 <h2 id='what-s-new-what-s-new-in-3-2-3'>What’s New in 3.2.3</h2>
 
-<p><strong>Audio Equalization available on Navigators</strong></p>
-
-<p>The <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#amplifier-navigator-eq">Amplifier</a> and <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#audio-video-switch-navigator-eq">AV Switch</a> Proxies have been enhanced to support the ability to display audio EQ functions on devices running Navigator. The enhancement includes a set of new Proxy Commands, Notifications and Capabilities to support this functionality.</p>
-
-<p><strong>Dynamic Transport Controls on Navigators</strong></p>
-
-<p>Audio Video drivers now have the ability to define which <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#dynamic-transport-controls-in-navigator">transport controls</a> are displayed on Navigators. This includes which buttons appear on the Button Bar as well as the Media Dashboard. This enhancement allows for the appropriate transport controls being displayed for each AV device.</p>
+<p>There were no modifications to the Camera Proxy  in conjunction with O.S. Release 3.2.3.</p>
 
 <h2 id='what-s-new-what-s-new-in-3-2-2'>What’s New in 3.2.2</h2>
 
-<p><em>There were no changes to this content for Operating System 3.2.2.</em></p>
+<p>There were no modifications to the Camera Proxy  in conjunction with O.S. Release 3.2.2.</p>
 
 <h2 id='what-s-new-what-s-new-in-3-2-1'>What’s New in 3.2.1</h2>
 
-<p><em>There were no changes to this content for Operating System 3.2.1.</em></p>
+<p>There were no modifications to the Camera Proxy  in conjunction with O.S. Release 3.2.1.</p>
 
-<p><h2 id='what-s-new-what-s-new-in-3-2-0'>What’s New in 3.2.0</h2><h3 id='what-s-new-what-s-new-in-3-2-0-proxies-that-were-modified'>Proxies that were Modified** </h3>
-<p><strong>Security Proxy</strong>
-The <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#security-partition-notifications-request_default_user_code_">REQUEST_DEFAULT_USER_CODE</a> partition notification was added as a mechanism for the protocol driver
-to initiate the communication to get that default user code upon driver update.</p></p>
+<h2 id='what-s-new-what-s-new-in-3-2-0'>What’s New in 3.2.0</h2>
 
-<p>The following Security Protocol Notifications were deprecated from the SDK: ALARM, ALARM_CLEAR, AWAY, DISARM, HOME, TROUBLE. Please see the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#security-panel-notifications">Security Panel Notification</a> and <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#security-partition-notifications">Security Partition Notification</a> areas for the latest list of Notifies.</p>
+<p>There were no modifications to the Camera Proxy  in conjunction with O.S. Release 3.2.0.</p>
 
-<p><h2 id='what-s-new-what-was-new-in-3-1-2'>What was New in 3.1.2</h2><h3 id='what-s-new-what-was-new-in-3-1-2-proxies-that-were-deprecated'>Proxies that were Deprecated** </h3>
-<p>The following Proxies were deprecated from the Proxy and Protocol Guide:</p></p>
+<h2 id='what-s-new-what-was-new-in-3-1-2'>What was New in 3.1.2</h2>
 
-<ul>
-<li>iPod</li>
-<li>Load Controller</li>
-</ul>
+<p>There were no modifications to the Camera Proxy  in conjunction with O.S. Release 3.1.2.</p>
 
-<p><h2 id='what-s-new-what-was-new-in-3-1-0'>What was New in 3.1.0</h2><h3 id='what-s-new-what-was-new-in-3-1-0-proxies-that-were-modified'>Proxies that were Modified** </h3>
-<p><strong>Light V2 Proxy</strong>
-light sample.c4i - A sample driver has been included to assist with better understanding the basic flow of commands from the Light Proxy as well as receiving protocol notifications. The driver can be found in the Samples directory under the root level of the DriverWorks SDK.zip file</p></p>
+<h2 id='what-s-new-what-was-new-in-3-1-0'>What was New in 3.1.0</h2>
 
-<p><strong>Media Service Proxy</strong>
-Detail Screen Type - Information regarding the implementation of the Detail Type Screen has been added to the documentation.</p>
+<p>There were no modifications to the Camera Proxy  in conjunction with O.S. Release 3.1.0.</p>
 
-<p><h2 id='what-s-new-what-was-new-in-o-s-3'>What was New in O.S.3</h2><h3 id='what-s-new-what-was-new-in-o-s-3-proxies-that-were-modified'>Proxies that were Modified** </h3>
-<p><strong>KeyPad Proxy</strong></p></p>
+<h2 id='what-s-new-what-was-new-in-o-s-3'>What was New in O.S.3</h2>
 
-<p>New Button Linking functionality has been added to the Proxy. Button Linking supports the ability of a driver interacting with a second driver using Button State and Button LED State. </p>
-
-<p><strong>Light (V2) Proxy</strong>
-LightV2 Proxy has been significantly enhanced in this release. It is recommended that Light Driver writers thoroughly review the Proxy content in this release. The changes included not only impact drivers written against OS 3. Previously delivered Light Proxy elements have been modified or in some cases deprecated. </p>
-
-<p>In OS 3, the proxy has been conceptually split into two components. The first being a Wall Control/Keypad portion and the second is a redesigned Light portion.The Light portion has been developed as a Bulb Library. The ultimate goal of the Bulb Library is to support ,more versatility for drivers to interrogate, group, control and manage individual drivers and bulbs. Bulb color, target level, minimum and maximum levels, cold start timing and other features are implemented in the Bulb Library. Dynamic Capabilities have also been added to the Light Portion. Note that all changes maintain backwards compatibility for driver side interaction. However, Navigators will have functionality deprecated due to performance reasons or improved ways of communicating with the driver.</p>
-
-<p><strong>Media Service Proxy</strong>
-Favoriting: In conjunction with the ability to &quot;Favorite&quot; Navigator UI screens in OS 3, drivers written using the Media Service Proxy can now provide the ability for end users to designate favorite media delivered through an Media Service Proxy driver such as Playlists, Albums, Tracks, Stations, Movies, TV Shows, etc. </p>
-
-<p>DashboardChanged Event: The DashboardChanged event now includes content on the use of custom icons and actions.</p>
-
-<p>Driver Notification Context Example: New code examples on have been added to the Media Service Proxy Driver Notification Prototype section in the Appendix.</p>
-
-<p><strong> Best Practices</strong>
-A new section called Best Practices has been added to the Proxy and Protocol Guide. This section contains information regarding the use cases that fall outside of the typical Proxy/Protocol driver implementation. This release contains Best Practice content on the following:</p>
-
-<p>Using the new Proxy-less command UPDATE PROPERTY. This is a non proxy-specific function that can be called from any device to change a property of any other device.</p>
-
-<p>OS 3 Navigator UI and Volume Control - Managing Volume Commands in conjunction with the use of OS 3&#39;s new volume control slider on the Control4 UI.</p>
+<p>There were no modifications to the Camera Proxy  in conjunction with O.S. Release 3.0.0.</p>
 <h1 id='camera-proxy-commands'>Camera Proxy Commands</h1>
 
 <h2 id='camera-proxy-commands-camera_off'>CAMERA_OFF</h2>
@@ -4145,309 +3837,6 @@ Module "ExtrasTextField" "extras/ExtrasTextField.lua"
 It is strongly recommended to hide rather than remove objects that will be temporary removed form the CI.</p>
 
 <p>Before destroying an Extras class instance, please use the <code>Extras:cleanCapability()</code> method. Also, please pay attention to the Capability section of the documentation.</p>
-<h1 id='dynamic-camera-streams'>Dynamic Camera Streams</h1>
-
-<p>The Camera Proxy has been enhanced with regard to what types of streams it provides. This is a result of the release of Control4’s next generation T4 touchscreens, new controllers and support for H.265 streaming. Camera drivers now have the ability to provide more stream options and can support a larger set of mixed hardware environments.</p>
-
-<p>Also, Navigators now support streaming tiles which results in the need to stream many cameras in parallel. To provide this functionality over a remote connection, it is desirable to offer the option to pick a lower bandwidth stream.</p>
-
-<p>For the best experience, cameras should be minimally configured with the following streams by default:</p>
-
-<table><thead>
-<tr>
-<th>Next Gen C4 OSD</th>
-<th>T4 Touch Screens</th>
-<th>Mobile</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>High Resolution H.265</td>
-<td>1080p H.265</td>
-<td>High Resolution H.265</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Legacy C4 OSD</th>
-<th>T3 Touch Screens</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>720p H.264</td>
-<td>720p H.264</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Small Streaming Tiles</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Low Resolution H.265</td>
-</tr>
-</tbody></table>
-
-<h4 id='dynamic-camera-streams-extras-library-use-case-examples-how-to-use-the-library-driver-support-for-dynamic-streams'>Driver Support for Dynamic Streams</h4>
-
-<p><em>See the <a href="https://snap-one.github.io/docs-driverworks-proxyprotocol/#dynamic-camera-streams-related-apis">Related APIs</a> section below for detailed information regarding the functions discussed in this section.</em></p>
-
-<p>New camera drivers should implement the dynamic streams API to provide a list of streams that the Navigators can pick from. In order to support dynamic streams the driver should:</p>
-
-<ol>
-<li><p>Set the requires_dynamic_stream_urls dynamic capability to “true”.</p></li>
-<li><p>Implement the GET_STREAM_URLS UI request command. This can be either implemented synchronously, by returning the list of cameras directly or it can also be implemented asynchronously. For example, if the driver needs to query a web service to get the current streams.</p></li>
-</ol>
-
-<p>If implemented asynchronously, when the stream list is available it will be necessary to send the Proxy the STREAM_URLS_READY Notify with the results. </p>
-
-<p>Drivers that do not have static URLs for streams will need to respond to the GET_STREAM_URLS call with an XML object that indicates the URL(s) is/are being generated and include a key with the response.  Once the driver has been able to obtain a URL for the stream, the driver should send a STREAM_URLS_READY Notify with the same key that is provided with this Synchronous call response.  An example of the response is:</p>
-
-<p><code>&lt;streams generating_key=&quot;1234&quot;/&gt;</code></p>
-
-<p>The key should be a unique 32 bit integer value.  We recommend starting at 1 and incrementing by 1 for each request that comes in.</p>
-
-<p>Also, if the driver does have a valid temporary URL that is still valid when it gets the call, no further Notify is needed and the driver should respond to this call with the XML of streams information.</p>
-
-<p>To indicate to a client that the driver supports this API call, a driver needs to set the requires_dynamic_stream_urls capability to true in the driver c4i or via DYNAMIC_CAPABILITIES_CHANGED Notify.</p>
-
-<p>If no Port is provided with a URL, the following ports are used by all clients as the default for the transport:</p>
-
-<ul>
-<li>http - 80</li>
-<li>https - 443</li>
-<li>rtsp - 554</li>
-<li>rtsps - 443</li>
-</ul>
-
-<h4 id='dynamic-camera-streams-extras-library-use-case-examples-how-to-use-the-library-support-for-caching-urls'>Support for Caching  URLs</h4>
-
-<p>The ability to cache the stream URL list is also supported. This removes the need to have to execute the GET_STREAM_URLS request every time a camera stream is loaded. This is supported with the capability: dynamic_urls_use_type. </p>
-
-<p>The driver also needs to send a DYNAMIC_URLS_CHANGED notification to the proxy when the configured URLs have been changed. The proxy would then send a &quot;DYNAMIC_URLS_CHANGED&quot; DataToUI in response to this that the Navigators would key off of to refresh any cached URLs. This is useful for driver&#39;s with MULTIPLE use type URLs.</p>
-
-<p><h2 id='dynamic-camera-streams-related-apis'>Related APIs</h2><h3 id='dynamic-camera-streams-related-apis-requires_dynamic_stream_urls'>requires_dynamic_stream_urls</h3>
-<p>Capability determining whether the camera should be asked for stream URLs through the more advanced API call.</p>
-<h3 id='dynamic-camera-streams-related-apis-signature'>Signature</h3>
-<p><code>&lt;requires_dynamic_stream_urls&gt;&lt;/requires_dynamic_stream_urls&gt;</code></p>
-<h3 id='dynamic-camera-streams-related-apis-type'>Type</h3>
-<p>Boolean: Defaults to false.</p>
-<h3 id='dynamic-camera-streams-related-apis-dynamic-capability'>Dynamic Capability</h3>
-<p>Yes</p>
-<h3 id='dynamic-camera-streams-related-apis-example'>Example</h3><div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;capabilities&gt;</span>
-    <span class="nt">&lt;requires_dynamic_stream_urls&gt;</span>true<span class="nt">&lt;/requires_dynamic_stream_urls&gt;</span>
-<span class="nt">&lt;/capabilities&gt;</span>
-</code></pre></div><h3 id='dynamic-camera-streams-related-apis-requires_dynamic_snapshot_urls'>requires_dynamic_snapshot_urls</h3>
-<p>Capability determining whether the camera should be asked for snapshot URLs through the more advanced API call.</p>
-<h3 id='dynamic-camera-streams-related-apis-signature'>Signature</h3>
-<p><code>&lt;requires_dynamic_snapshot_urls&gt;&lt;/requires_dynamic_snapshot_urls&gt;</code></p>
-<h3 id='dynamic-camera-streams-related-apis-type'>Type</h3>
-<p>Boolean: Defaults to false.</p>
-<h3 id='dynamic-camera-streams-related-apis-dynamic-capability'>Dynamic Capability</h3>
-<p>Yes</p>
-<h3 id='dynamic-camera-streams-related-apis-example'>Example</h3><div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;capabilities&gt;</span>
-    <span class="nt">&lt;requires_dynamic_snapshot_urls&gt;</span>true<span class="nt">&lt;/requires_dynamic_snapshot_urls&gt;</span>
-<span class="nt">&lt;/capabilities&gt;</span>
-</code></pre></div><h3 id='dynamic-camera-streams-related-apis-get_stream_urls'>GET_STREAM_URLS</h3>
-<p>This command is used to obtain URLs for a camera that does not have a constant URL like a Cloud based camera or for cameras that have a wider range of features and configurable options that can produce better customer experiences using various clients. </p></p>
-
-<p>A Client will make this request to a driver and provide information about how the client will be using the stream.  The driver optionally can adjust the URL(s) returned based on this information.  Driver developers are encouraged to test their driver on various devices to ensure good customer experiences when viewing collages, high resolution or high frame rate streams.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>CODEC</td>
-<td>Optional. Comma separated list of codecs that the client can support with the most preferred first.  A driver is not required to handle this but some drivers may want to if they support multiple codecs. (mjpeg, h264, h264i, h265)</td>
-</tr>
-<tr>
-<td>RESOLUTION</td>
-<td>Optional. Resolution that the client will be using to display the stream.  A driver is not required to support this but this can be helpful for clients that may need a lower resolution stream for collages of multiple cameras and a 4MP or higher stream would tax the client hardware.</td>
-</tr>
-<tr>
-<td>FPS</td>
-<td>Optional. Frames Per Second that the client would prefer.  A driver is not required to support this but if it does it may result in better customer experience when dealing with collages on Navigators.</td>
-</tr>
-</tbody></table>
-
-<h3 id='dynamic-camera-streams-related-apis-examples'>Examples</h3>
-
-<p>An example of the simplest XML returned by a driver is shown to the right:</p>
-
-<div class="highlight"><pre class="highlight xml tab-xml"><code>--- simple
-
-<span class="nt">&lt;streams&gt;</span>
-   <span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"http://192.168.1.150/view_camera.cgi"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/streams&gt;</span>
-
-or
-
-<span class="nt">&lt;streams&gt;</span>
-   <span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"https://192.168.1.150:443/view_camera.cgi"</span> <span class="na">codec=</span><span class="s">"h264"</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"http://192.168.1.150:80/view_camera_h265.cgi"</span> <span class="na">codec=</span><span class="s">"h265"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/streams&gt;</span>
-</code></pre></div>
-
-<p>This is followed by a more complex example from a camera with more features and can provide more options to allow clients to pick a better stream:</p>
-
-<div class="highlight"><pre class="highlight xml tab-xml"><code>--- complex
-
-<span class="nt">&lt;streams&gt;</span>
-  <span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"rtsps://server.company.com:554/rtsp.cgi"</span> <span class="na">codec=</span><span class="s">"h265"</span> <span class="na">resolution=</span><span class="s">"1920x1080"</span> <span class="na">fps=</span><span class="s">"60"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"rtsps://server.company.com:554/cloudapi.cgi?fh2f5hw2"</span> <span class="na">codec=</span><span class="s">"h265"</span> <span class="na">resolution=</span><span class="s">"640x480"</span> <span class="na">fps=</span><span class="s">"5"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"rtsp://server.company.com:554/cloudapi.cgi?fh2f4hw1"</span> <span class="na">codec=</span><span class="s">"h264"</span> <span class="na">resolution=</span><span class="s">"1920x1080"</span> <span class="na">fps=</span><span class="s">"60"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"rtsp://server.company.com:554/cloudapi.cgi?fh2f4hw2"</span> <span class="na">codec=</span><span class="s">"h264"</span> <span class="na">resolution=</span><span class="s">"640x480"</span> <span class="na">fps=</span><span class="s">"5"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"https://server.company.com:443/cloudapi.cgi?fh2fhsw3"</span> <span class="na">codec=</span><span class="s">"mjpeg"</span> <span class="na">resolution=</span><span class="s">"1920x1080"</span> <span class="na">fps=</span><span class="s">"20"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"https://server.company.com:443/cloudapi.cgi?fh2fhsw5"</span> <span class="na">codec=</span><span class="s">"mjpeg"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"http://server.company.com:80/cloudapi.cgi?fh2fhw3"</span> <span class="na">codec=</span><span class="s">"mjpeg"</span> <span class="na">resolution=</span><span class="s">"1920x1080"</span> <span class="na">fps=</span><span class="s">"20"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"http://server.company.com:80/cloudapi.cgi?fh2fhw5"</span> <span class="na">codec=</span><span class="s">"mjpeg"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/streams&gt;</span>
-</code></pre></div><h3 id='dynamic-camera-streams-related-apis-get_snapshot_urls'>GET_SNAPSHOT_URLS</h3>
-<p>This command is used to obtain URLs for a camera that does not have a constant URL like a Cloud based camera or for cameras that have a wider range of features and configurable options that can produce better customer experiences using various clients. </p>
-
-<p>A Client will make this request to a driver and provide information about how the client will be using the snapshot.  The driver optionally can adjust the URL(s) returned based on this information.</p>
-<h3 id='dynamic-camera-streams-related-apis-examples'>Examples</h3>
-<p>An example of the simplest XML returned by a driver is shown to the right:</p>
-<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;snapshots&gt;</span>
- <span class="nt">&lt;snapshot</span> <span class="na">url=</span><span class="s">"http://192.168.1.150/view_camera.cgi"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/snapshots&gt;</span>
-
-or
-
-<span class="nt">&lt;snapshots&gt;</span>
- <span class="nt">&lt;snapshot</span> <span class="na">url=</span><span class="s">"http://192.168.1.150:80/custom_resolution_as_requested_by_client.cgi"</span> <span class="na">resolution=</span><span class="s">"644x481"</span><span class="nt">&gt;</span>
- <span class="nt">&lt;snapshot</span> <span class="na">url=</span><span class="s">"https://192.168.1.150:443/view_snapshot.cgi"</span> <span class="na">resolution=</span><span class="s">"3840x2160"</span><span class="nt">&gt;</span>
- <span class="nt">&lt;snapshot</span> <span class="na">url=</span><span class="s">"https://192.168.1.150:443/view_snapshot.cgi"</span> <span class="na">resolution=</span><span class="s">"1920x1080"</span><span class="nt">&gt;</span>
- <span class="nt">&lt;snapshot</span> <span class="na">url=</span><span class="s">"https://192.168.1.150:80/view_snapshot.cgi"</span> <span class="na">resolution=</span><span class="s">"640x480"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/snapshots&gt;</span>
-</code></pre></div><h3 id='dynamic-camera-streams-related-apis-usage-note'>Usage Note</h3>
-<p><strong>Cloud Based Cameras </strong></p>
-
-<p>Drivers that do not have static URLs for snapshots will need to respond to this call with an XML object that indicates the URL(s) is/are being generated and include a key with the response.  Once the driver has been able to obtain a URL for the stream, the driver should send a SNAPSHOT_URLS_READY Notify with the same key that is provided with this Synchronous call response.  An example of the response is:</p>
-
-<p><code>&lt;streams generating_key=&quot;1234&quot;/&gt;</code></p>
-
-<p>The driver would then follow up with the SNAPSHOT_URLS_READY Notify and specify KEY=1234 in that notify along with the URL.  The key should be a unique 32 bit integer value.  We recommend starting at 1 and incrementing by 1 for each request that comes in.</p>
-
-<p>Also, if the driver does have a valid temporary that is still valid when it gets the call, no further Notify is needed and the driver should respond to this call with the XML of snapshots information.</p>
-
-<p>To indicate to a client that the driver supports this API call, a driver needs to set the requires_dynamic_stream_urls capability to true in the driver or via the DYNAMIC_CAPABILITIES_CHANGED Notify.</p>
-
-<p>If no Port is provided with a URL, the following ports are used by all clients as the default for the transport:</p>
-
-<p>http - 80
-https - 443</p>
-<h3 id='dynamic-camera-streams-related-apis-stream_urls_ready'>STREAM_URLS_READY</h3>
-<p>Protocol Notification used for following up to a GET_STREAM_URLS Synchronous call.  This Notify will let a UI know that the URL information they requested is ready.  The driver must use the same key parameter value that was returned to the UI as the key parameter in this notify.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>KEY</td>
-<td>Key of the originating call for the snapshot to be created.</td>
-</tr>
-<tr>
-<td>URLS</td>
-<td>String of XML object as described in the description of this call.</td>
-</tr>
-</tbody></table>
-<h3 id='dynamic-camera-streams-related-apis-examples'>Examples</h3>
-<p>An example of the simplest XML used by a driver is shown to the right:</p>
-<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;streams</span> <span class="na">key=</span><span class="s">"1234"</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"http://192.168.1.150/view_camera.cgi"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/streams&gt;</span>
-
-or
-
-<span class="nt">&lt;streams</span> <span class="na">key=</span><span class="s">"1234"</span> <span class="na">camera_address=</span><span class="s">"192.168.1.150"</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"https://192.168.1.150:443/view_camera.cgi"</span> <span class="na">codec=</span><span class="s">"h264"</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"http://192.168.1.150:80/view_camera_h265.cgi"</span> <span class="na">codec=</span><span class="s">"h265"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/streams&gt;</span>
-</code></pre></div>
-
-<p>This is followed by an example from a camera with more features and can provide more options to allow clients to pick a better stream:</p>
-
-<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;streams</span> <span class="na">key=</span><span class="s">"1234"</span> <span class="na">camera_address=</span><span class="s">"server.company.com"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"rtsps://192.168.1.150:554/rtsp.cgi"</span> <span class="na">codec=</span><span class="s">"h265"</span> <span class="err">resolution"1920x1080"</span> <span class="na">fps=</span><span class="s">"60"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"rtsps://192.168.1.150:554/cloudapi.cgi?fh2f5hw2"</span> <span class="na">codec=</span><span class="s">"h265"</span> <span class="err">resolution"640x480"</span> <span class="na">fps=</span><span class="s">"5"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"rtsp://192.168.1.150:554/cloudapi.cgi?fh2f4hw1"</span> <span class="na">codec=</span><span class="s">"h264"</span> <span class="err">resolution"1920x1080"</span> <span class="na">fps=</span><span class="s">"60"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"rtsp://192.168.1.150:554/cloudapi.cgi?fh2f4hw2"</span> <span class="na">codec=</span><span class="s">"h264"</span> <span class="err">resolution"640x480"</span> <span class="na">fps=</span><span class="s">"5"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"https://192.168.1.150:443/cloudapi.cgi?fh2fhsw3"</span> <span class="na">codec=</span><span class="s">"mjpeg"</span> <span class="err">resolution"1920x1080"</span> <span class="na">fps=</span><span class="s">"20"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"https://192.168.1.150:443/cloudapi.cgi?fh2fhsw5"</span> <span class="na">codec=</span><span class="s">"mjpeg"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"http://192.168.1.150:80/cloudapi.cgi?fh2fhw3"</span> <span class="na">codec=</span><span class="s">"mjpeg"</span> <span class="err">resolution"1920x1080"</span> <span class="na">fps=</span><span class="s">"20"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;stream</span> <span class="na">url=</span><span class="s">"http://192.168.1.150:80/cloudapi.cgi?fh2fhw5"</span> <span class="na">codec=</span><span class="s">"mjpeg"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/streams&gt;</span>
-
-</code></pre></div><h3 id='dynamic-camera-streams-related-apis-snapshot_urls_ready'>SNAPSHOT_URLS_READY</h3>
-<p>Notify used for following up to a GET_SNAPSHOT_URLS Synchronous call.  This Notify will let a UI know that the URL information they requested is ready.  The driver must use the same key parameter value that was returned to the UI as the key parameter in this notify.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>KEY</td>
-<td>Key of the originating call for the snapshot to be created.</td>
-</tr>
-<tr>
-<td>URLS</td>
-<td>String of XML object as described in the description of this call.</td>
-</tr>
-</tbody></table>
-<h3 id='dynamic-camera-streams-related-apis-example'>Example</h3><div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;snapshots</span> <span class="na">key=</span><span class="s">"1234"</span><span class="nt">&gt;</span>
- <span class="nt">&lt;snapshot</span> <span class="na">url=</span><span class="s">"http://192.168.1.150/view_camera.cgi"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/snapshots&gt;</span>
-
-or
-
-<span class="nt">&lt;snapshots</span> <span class="na">key=</span><span class="s">"1234"</span><span class="nt">&gt;</span>
- <span class="nt">&lt;snapshot</span> <span class="na">url=</span><span class="s">"http://192.168.1.150:80/custom_resolution_as_requested_by_client.cgi"</span> <span class="na">resolution=</span><span class="s">"644x481"</span><span class="nt">&gt;</span>
- <span class="nt">&lt;snapshot</span> <span class="na">url=</span><span class="s">"https://192.168.1.150:443/view_snapshot.cgi"</span> <span class="na">resolution=</span><span class="s">"3840x2160"</span><span class="nt">&gt;</span>
- <span class="nt">&lt;snapshot</span> <span class="na">url=</span><span class="s">"https://192.168.1.150:443/view_snapshot.cgi"</span> <span class="na">resolution=</span><span class="s">"1920x1080"</span><span class="nt">&gt;</span>
- <span class="nt">&lt;snapshot</span> <span class="na">url=</span><span class="s">"https://192.168.1.150:80/view_snapshot.cgi"</span> <span class="na">resolution=</span><span class="s">"640x480"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/snapshots&gt;</span>
-</code></pre></div><h3 id='dynamic-camera-streams-related-apis-dynamic_urls_use_type'>dynamic_urls_use_type</h3>
-<p>Supports the following use types:</p>
-
-<p>MULTIPLE - Default if the capability is not specified. URLs can be used repeatedly. If URLs change, the driver should send DYNAMIC_URLS_CHANGED notification to the proxy.</p>
-
-<p>SINGLE - URLs can only be used once. Driver must be asked each time for a new set of URLs.</p>
-
-<p>EXPIRING (Do not include in 3.3.1) - URLs can be used more than once, but expire after some time period.</p>
-<h3 id='dynamic-camera-streams-related-apis-signature'>Signature</h3>
-<p><code>&lt;dynamic_urls_use_type&gt;&lt;/dynamic_urls_use_type&gt;</code></p>
-<h3 id='dynamic-camera-streams-related-apis-dynamic-capability'>Dynamic Capability</h3>
-<p>Yes</p>
-<h3 id='dynamic-camera-streams-related-apis-example'>Example</h3><div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;capabilities&gt;</span>
-    <span class="nt">&lt;dynamic_urls_use_type&gt;</span>SINGLE<span class="nt">&lt;/dynamic_urls_use_type&gt;</span>
-<span class="nt">&lt;/capabilities&gt;</span>
-</code></pre></div>
-<h1 id='camera-audio-distribution'>Camera Audio Distribution</h1>
-
-<p>Beginning with O.S. 3.4.0, camera drivers have the ability to distribute audio to devices running Navigator.</p>
-
-<p>If a camera supports the proper CODEC and the camera microphone has been enabled in the appropriate interface a new audio button will appear at the bottom of the single-camera view. This will allow the user to hear live audio with the live video. </p>
-
-<p>Note that if the camera does not support the proper codec, or the camera microphone has been disabled in the camera interface, no button will appear in the single-camera view.</p>
-
-<p><strong>Requirements</strong></p>
-
-<ul>
-<li><p>Camera has a microphone and it&#39;s enabled. Note that most most are disabled by default. Depending on the camera/camera driver, the camera microphone can be enabled/disabled within the driver or in OvrC.</p></li>
-<li><p>Ensure the configuration for the camera stream is video &amp; audio, not just video.</p></li>
-<li><p>The camera supports codec G.711 u-law (G.711μ).</p></li>
-<li><p>The driver for the camera shows the Audio Property is present. </p></li>
-</ul>
 <h1 id='camera-capabilities'>Camera Capabilities</h1>
 
 <h2 id='camera-capabilities-address_readonly'>address_readonly</h2>
