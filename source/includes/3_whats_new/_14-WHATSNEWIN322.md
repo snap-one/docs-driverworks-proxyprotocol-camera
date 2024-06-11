@@ -1,3 +1,3 @@
 ## What’s New in 3.2.2
 
-_There were no changes to this content for Operating System 3.2.2._
+There were no modifications to the Camera Proxy  in conjunction with O.S. Release 3.2.2.

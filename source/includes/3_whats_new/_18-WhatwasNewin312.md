@@ -1,8 +1,4 @@
 
 ## What was New in 3.1.2
 
-### Proxies that were Deprecated\*\* 
-The following Proxies were deprecated from the Proxy and Protocol Guide:
-
-- iPod
-- Load Controller
+There were no modifications to the Camera Proxy  in conjunction with O.S. Release 3.1.2.
