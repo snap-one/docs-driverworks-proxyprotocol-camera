@@ -14,7 +14,7 @@ Defines the number of presets displayed on the UI. See the [Camera Proxy and Pre
 
 ### Usage Note
 
-Default is 0. Note that Navigator devices will truncate this value to a supported. number.
+Default is 0. Note that Navigator devices will truncate this value to a supported number.
 
 
 ### Example
@@ -27,4 +27,4 @@ Default is 0. Note that Navigator devices will truncate this value to a supporte
 
 
 
-[1]:	https://snap-one.github.io/docs-driverworks-fundamentals-4.0.0-beta/#proxy-specific-information-camera-proxy-and-presets
+[1]:	https://snap-one.github.io/docs-driverworks-fundamentals/#proxy-specific-information-camera-proxy-and-presets
