@@ -3972,7 +3972,7 @@ It is strongly recommended to hide rather than remove objects that will be tempo
 </code></pre></div>
 <h2 id='camera-capabilities-has_dynamic_presets'>has_dynamic_presets</h2>
 <p>Returns true if the cameras support for dynamic presets.
-Defaults to false.</p>
+Defaults to false. See the <a href="https://snap-one.github.io/docs-driverworks-fundamentals-4.0.0-beta/#proxy-specific-information-camera-proxy-and-presets">Camera Proxy and Presets</a> documentation for more information.</p>
 <h3 id='camera-capabilities-has_dynamic_presets-signature'>Signature</h3>
 
 <p><code>&lt;has_dynamic_presets&gt;&lt;/has_dynamic_presets&gt;</code></p>
@@ -4099,7 +4099,9 @@ Defaults to false.</p>
     <span class="nt">&lt;modes&gt;</span>MJPEG<span class="nt">&lt;/modes&gt;</span>
 <span class="nt">&lt;/capabilities&gt;</span>
 </code></pre></div>
-<h2 id='camera-capabilities-number_presets'>number_presets</h2><h3 id='camera-capabilities-number_presets-signature'>Signature</h3>
+<h2 id='camera-capabilities-number_presets'>number_presets</h2>
+<p>Defines the number of presets displayed on the UI. See the <a href="https://snap-one.github.io/docs-driverworks-fundamentals-4.0.0-beta/#proxy-specific-information-camera-proxy-and-presets">Camera Proxy and Presets</a> documentation for more information.</p>
+<h3 id='camera-capabilities-number_presets-signature'>Signature</h3>
 
 <p><code>&lt;number_presets&gt;&lt;/number_preets&gt;</code></p>
 
@@ -4117,7 +4119,7 @@ Defaults to false.</p>
 
 <h3 id='camera-capabilities-number_presets-usage-note'>Usage Note</h3>
 
-<p>Default is 0. Note that Navigator devices will truncate this value to a number in which they support.</p>
+<p>Default is 0. Note that Navigator devices will truncate this value to a supported. number.</p>
 
 <h3 id='camera-capabilities-number_presets-example'>Example</h3><div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;capabilities&gt;</span>
     <span class="nt">&lt;number_presets&gt;</span>6<span class="nt">&lt;/number_presets&gt;</span>
