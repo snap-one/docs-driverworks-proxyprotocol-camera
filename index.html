@@ -1864,7 +1864,7 @@ or
 
 <h2 id='camera-protocol-notifications-presets_changed'>PRESETS_CHANGED</h2>
 
-<p>The camera driver should send this notification to the Proxy on startup with the current presets list. The driver should also notify again whenever presets are changed: created, renamed, updated, deleted, or re-ordered. </p>
+<p>The camera driver should send this notification to the Proxy on startup with the complete presets list. The driver must notify again whenever presets are changed: created, renamed, updated, deleted, or re-ordered. This must include all of the preset data, regardless if a subset of that data has not changed.</p>
 
 <h3 id='camera-protocol-notifications-presets_changed-name'>Name</h3>
 
@@ -1878,7 +1878,7 @@ or
 
 <p><code>None</code></p>
 
-<h3 id='camera-protocol-notifications-presets_changed-example'>Example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="err">`</span><span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">PROXY_BINDING</span><span class="p">,</span> <span class="s1">'PRESETS_CHANGED'</span><span class="p">,</span> <span class="p">{</span> <span class="n">XML</span> <span class="o">=</span> <span class="s2">"&lt;dynamic_presets&gt;&lt;max_presets&gt;100&lt;/max_presets&gt;&lt;preset...&lt;/dynamic_presets&gt;"</span> <span class="p">},</span> <span class="s1">'NOTIFY'</span><span class="p">)</span><span class="err"> `</span>
+<h3 id='camera-protocol-notifications-presets_changed-example'>Example</h3><div class="highlight"><pre class="highlight lua tab-lua"><code><span class="n">C4</span><span class="p">:</span><span class="n">SendToProxy</span><span class="p">(</span><span class="n">PROXY_BINDING</span><span class="p">,</span> <span class="s1">'PRESETS_CHANGED'</span><span class="p">,</span> <span class="p">{</span> <span class="n">XML</span> <span class="o">=</span> <span class="s2">"&lt;dynamic_presets&gt;&lt;max_presets&gt;100&lt;/max_presets&gt;&lt;preset...&lt;/dynamic_presets&gt;"</span> <span class="p">},</span> <span class="s1">'NOTIFY'</span><span class="p">)</span><span class="err"> `</span>
 
 <span class="err">—</span> <span class="n">Note</span> <span class="n">that</span> <span class="n">formed</span> <span class="n">XML</span> <span class="k">for</span> <span class="n">dynamic_presets</span> <span class="n">should</span> <span class="n">resemble</span> <span class="n">the</span> <span class="n">following</span><span class="p">:</span>
 
