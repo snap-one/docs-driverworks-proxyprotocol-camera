@@ -1,6 +1,6 @@
 ## PRESET
 
-Set the camera to preset location.
+Set the camera to preset location. This command is used with the original camera proxy Composer Pro UI (pre-O.S. 4.0.0) in conjunction with the [number\_presets ][1]capability.
 
 
 ### Name
@@ -16,3 +16,5 @@ Set the camera to preset location.
 ### Returns
 
 `None`
+
+[1]:	https://snap-one.github.io/docs-driverworks-proxyprotocol-camera/#camera-capabilities-number_presets
