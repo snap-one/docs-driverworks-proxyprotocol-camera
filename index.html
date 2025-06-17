@@ -708,10 +708,11 @@
           </li>
       </ul>
         <ul class="toc-footer">
+            <li><a href='https://github.com/snap-one/docs-driverworks'>DriverWorks GitHub Home</a></li>
             <li><a href='https://snap-one.github.io/docs-driverworks-introduction/'>An Introduction to DriverWorks</a></li>
             <li><a href='https://snap-one.github.io/docs-driverworks-fundamentals/'>DriverWorks Fundamentals Guide</a></li>
             <li><a href='https://snap-one.github.io/docs-driverworks-api/'>DriverWorks API Reference Guide</a></li>
-            <li><a href='https://github.com/snap-one/docs-driverworks'>DriverWorks GitHub Home</a></li>
+            <li><a href='https://snap-one.github.io/docs-driverworks-xml/'>DriverWorks XML Reference</a></li>
             <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -1177,6 +1178,10 @@ Your driver can facilitate communications with multiple types of proxies for a s
 <tr>
 <td>FPS</td>
 <td>Optional. Frames Per Second that the client would prefer.  A driver is not required to support this but if it does it may result in better customer experience when dealing with collages on Navigators.</td>
+</tr>
+<tr>
+<td>useCache</td>
+<td>Optional. The useCache parameter is a boolean param useful for devices that do not support asynchronous replies  when requesting URL streams. If a device receives a useCache param set to TRUE, it should directly return streams XML data.</td>
 </tr>
 </tbody></table>
 
